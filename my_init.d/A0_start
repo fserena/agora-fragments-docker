@@ -1,5 +1,8 @@
 #!/bin/sh
-/usr/lib/agora/.env/bin/pip install git+https://github.com/fserena/agora-stoa-client.git@develop
-/usr/lib/agora/.env/bin/pip install git+https://github.com/fserena/agora-fragments.git@develop
+if [ -z "$AGORA_FRAGMENTS_VERSION" ]; then    
+    /usr/lib/agora/.env/bin/pip install --upgrade Agora-Fragments
+else
+	/usr/lib/agora/.env/bin/pip install --upgrade Agora-Fragments==$AGORA_FRAGMENTS_VERSION
+fi
 
 /usr/lib/agora/.env/bin/fragments &
